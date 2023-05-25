@@ -7,10 +7,16 @@ import { PostsController } from './application/controllers/posts.controller';
 import { UserService } from './domain/users/user.service';
 import { PostsService } from './domain/posts/posts.service';
 import { AuthService } from './domain/auth/auth.service';
+import {TypeOrmModule} from "@nestjs/typeorm";
+import { ConfigModule } from '@nestjs/config';
+import ormConfig from "./infrastructure/ormConfig";
 
 @Module({
-  imports: [],
+  imports: [ConfigModule.forRoot({isGlobal: true, envFilePath: ".env"}), TypeOrmModule.forRoot(ormConfig)],
   controllers: [AppController, UserController, AuthController, PostsController],
   providers: [AppService, UserService, PostsService, AuthService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+  }
+}
