@@ -1,9 +1,9 @@
 import "dotenv/config"
 
 import {entitiesArray} from "../config/entities.array";
-import {TypeOrmModuleOptions} from "@nestjs/typeorm";
+import {DataSource, DataSourceOptions} from "typeorm";
 
-const ormConfig: TypeOrmModuleOptions = {
+export const dataSourceOptions: DataSourceOptions  = {
     migrationsTableName: 'migrations',
     type: "postgres",
     host: process.env.POSTGRES_HOST as string,
@@ -19,5 +19,5 @@ const ormConfig: TypeOrmModuleOptions = {
     // subscribers: ['src/subscriber/**/*{.ts,.js}'],
 }
 
-
-export default ormConfig;
+const dataSource = new DataSource(dataSourceOptions)
+export default dataSource;

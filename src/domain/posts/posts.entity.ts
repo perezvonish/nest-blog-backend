@@ -1,6 +1,6 @@
 import {Entity} from "typeorm";
-import {BaseEntity} from "../../config/base.entity";
+import {Base} from "../../config/base";
 
 @Entity("posts")
-export class PostsEntity extends BaseEntity {
+export class PostsEntity extends Base {
 }
